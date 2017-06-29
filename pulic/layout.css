@@ -1,0 +1,14 @@
+body{background-color: #d7dfed}
+h1{text-align: center}
+#wrapper{width: 800px; margin: auto}
+#left, #right, #left-right{min-height: 500px; float: left; margin-top: 10px}
+#left-right{width: 15% ;background: #78e9ed}
+#left{width: 20%; background: #eaf4b7}
+#right{width: 65%; background-color: #d6f9d9}
+#roomHienTai{background-color: gray; width: 100px; float: right; color: white}
+.block{width: 100%; clear: both}
+#danhsachmsg{height: 450px; overflow: scroll; clear: both}
+#txtMessage, #btnChat{float: left; margin: 2px}
+#txtMessage{width: 70%}
+#btnChat{width: 25%}
+#title{background-color: #ccf900; text-align: center; padding: 5px}

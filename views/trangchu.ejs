@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Demo</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="layout.css" />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="xuly.js"></script>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script>
+            
+            socket.on("server-send-rooms", function(data){
+                $("#dsRoom").html("");
+                data.map(function(r){
+                    $("#dsRoom").append("<h4 class='room'>" + r + "</h4>");
+                });
+            });
+            socket.on("server-send-room-socket", function(data){
+                $("#roomHienTai").html(data);
+            });
+            socket.on("server-chat", function(data){
+                $("#right").append("<div>" + data + "</div>");
+               
+            });
+            $(document).ready(function(){
+                $("#btnTaoRoom").click(function(){
+                    socket.emit("tao-room", $("#txtRoom").val());
+                });
+                $("#btnChat").click(function(){
+                    socket.emit("user-chat", $("#txtMessage").val());
+                });
+
+                
+            });
+    </script>
+    </head>
+    <body>
+    <div id="wrapper">
+        <h1>Demo Chat Online</h1> <h4 id="roomHienTai">....</h4>
+        <input type="text" id="txtUser" placeholder="UserName" />
+        <input type="button" id="btnDangki" value="Dang Ki" />
+        <div class="block"></div>
+        <input type="text" id="txtRoom" placeholder="Input Name Room" />
+        <input type="button" id="btnTaoRoom" value="Tao Room" />
+        <div class="block"></div>
+        <div id="left">
+            <div id="title">ROOM DANG CO</div>
+            <div id="dsRoom"></div>
+        
+        </div>
+        <div id="left-right">
+            <div id="title" >User Online</div>
+        </div>
+        <div id="right">
+            <div class="block"></div>
+            <!--<div id="danhsachmsg"></div>-->
+            <input type="text" id="txtMessage" placeholder="Input content chat.." value="">
+            <input type="button" id="btnChat" value="Send">
+        </div>
+    </div>
+    </body>
+</html>
